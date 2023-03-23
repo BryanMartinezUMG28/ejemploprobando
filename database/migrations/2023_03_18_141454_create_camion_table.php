@@ -14,25 +14,20 @@ class CreateCamionTable extends Migration
     public function up()
     {
         Schema::create('camion', function (Blueprint $table) {
-            $table->id();
-            $table ->integer('id_placa')->unique();
+
+            //Llave primaria id_placa
+            $table ->integer('id_placa')->primary();
+
             $table ->string('placa_camion', 6);
-            $table ->string('marca', 45);
-            $table ->string('color', 25);
-            $table ->date('modelo');
+            $table ->string('marca', 45)->nullable();
+            $table ->string('color', 25)->nullable();
+            $table ->date('modelo')->nullable();
             $table ->integer('capacidad_toneladas');
 
-            $table ->unsignedBigInteger('transporte_codigo');
-            $table ->foreign('transporte_codigo')
-                ->references('id')
-                ->on('transporte');
-                //->onDelete('set null'); //Cuando se elimine un trasnporte, los datos no se coloque como NULL (Nulo).
-
-
-
+            //Llave foranea
+            $table->foreignId('id_transporte')->references('id')->on('transporte');
 
             $table->timestamps();
-
 
         });
     }
