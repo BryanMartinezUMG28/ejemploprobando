@@ -1,18 +1,10 @@
 <?php
 
+use App\Http\Controllers\TransportesController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', [TransportesController::class, 'index'])->name('transportes.index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/create', [TransportesController::class, 'create'])->name('transportes.create');
+
+Route::get('/edit', [TransportesController::class, 'edit'])->name('transportes.edit');
