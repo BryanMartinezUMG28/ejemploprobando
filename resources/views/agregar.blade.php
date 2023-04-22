@@ -12,7 +12,7 @@
             <p class="card-text">
 
 
-            <form action="#" method="POST">
+            <form action="{{route('transportes.store')}}" method="POST">
                 @csrf
                 <label for="">ID</label>
                 <input type="text" name="id" class="form-control" required>
